@@ -1,0 +1,10 @@
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\bin\Debug\pong.exe.config
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\bin\Debug\pong.exe
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\bin\Debug\pong.pdb
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.csproj.AssemblyReference.cache
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.Form1.resources
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.Properties.Resources.resources
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.csproj.GenerateResource.cache
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.csproj.CoreCompileInputs.cache
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.exe
+C:\Users\yoanv\OneDrive - Ynov\Bureau\pong\pong\obj\Debug\pong.pdb
