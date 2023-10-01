@@ -49,9 +49,34 @@ namespace pong
 
         public void CheckCollision(Player player, Computer cpu)
         {
+
             if (BallPb.Bounds.IntersectsWith(player.Bounds) || BallPb.Bounds.IntersectsWith(cpu.Bounds))
             {
+                // Déterminer le côté de la collision (haut ou bas de la raquette)
+                float paddleCenterY;
+                if (BallPb.Bounds.IntersectsWith(player.Bounds))
+                {
+                    paddleCenterY = player.Bounds.Top + player.Bounds.Height / 2f;
+                }
+                else
+                {
+                    paddleCenterY = cpu.Bounds.Top + cpu.Bounds.Height / 2f;
+                }
+
+                float ballCenterY = BallPb.Top + BallPb.Height / 2f;
+                bool hitTop = ballCenterY < paddleCenterY;
+
+                // Inverser la direction de la balle en fonction du côté de la collision
                 BallSpeedX = -BallSpeedX;
+                if (hitTop)
+                {
+                    BallSpeedY = -Math.Abs(BallSpeedY);
+                }
+                else
+                {
+                    BallSpeedY = Math.Abs(BallSpeedY);
+                }
+
                 // Augmenter la vitesse de la balle à chaque rebond
                 BallSpeedX *= 1.1f;
                 BallSpeedY *= 1.1f;
@@ -62,8 +87,10 @@ namespace pong
             }
         }
 
+
         public void CheckAndHandleOutOfBounds(int clientWidth, int clientHeight, ref int playerScore, ref int cpuScore, ref int speedIncrement)
         {
+            // Vérifie si la balle est sortie des limites de l'écran et met à jour les scores
             if (BallPb.Left < 0)
             {
                 cpuScore++;
@@ -76,6 +103,7 @@ namespace pong
                 if (playerScore < 7) Reset();
                 speedIncrement = Math.Abs(speedIncrement);
             }
+            // Si la balle touche le haut ou le bas de l'écran, inverse la direction en Y
             if (BallPb.Top < 0 || BallPb.Top + BallPb.Height > clientHeight)
             {
                 BallSpeedY = -BallSpeedY;

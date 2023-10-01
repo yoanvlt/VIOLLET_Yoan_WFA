@@ -13,7 +13,8 @@ namespace pong
         private int score = 0;
         private int cpuScore = 0;
         private int speedIncrement = 1;
-        private const int MaxScore = 7;
+        private const int MaxScore = 1;
+        public string Winner = "";
 
         public Form1()
         {
@@ -34,26 +35,42 @@ namespace pong
 
         private void TimerTick(object sender, EventArgs e)
         {
+            // Met à jour les mouvements du joueur, de l'ordinateur et de la balle
             player.Move();
             cpu.Move(ballPb);
             ball.Move();
+
+            // Vérifie et gère les collisions entre la balle et les raquettes
             ball.CheckCollision(player, cpu);
+
+            // Vérifie et gère si la balle est hors des limites de l'écran
             ball.CheckAndHandleOutOfBounds(ClientSize.Width, ClientSize.Height, ref score, ref cpuScore, ref speedIncrement);
+            
+            // Met à jour les scores affichés
             UpdateScores();
+
+            // Vérifie si le score final a été atteint et arrête le jeu si c'est le cas
             CheckFinalScore();
         }
 
         private void CheckFinalScore()
         {
-            if (score > MaxScore)
+            if (score == MaxScore)
             {
+                Winner = "Le joueur";
                 gameTimer.Stop();
-                MessageBox.Show("Vous avez gagné ce jeu");
+                EndForm endForm = new EndForm(Winner);
+                endForm.Show();
+                this.Hide();
             }
-            if (cpuScore > MaxScore)
+            if (cpuScore == MaxScore)
             {
+                Winner = "L'ordinateur";
                 gameTimer.Stop();
-                MessageBox.Show("Le CPU gagne, vous perdez");
+                EndForm endForm = new EndForm(Winner);
+                endForm.Show();
+                this.Hide();
+                ;
             }
         }
 
