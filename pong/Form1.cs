@@ -13,7 +13,7 @@ namespace pong
         private int score = 0;
         private int cpuScore = 0;
         private int speedIncrement = 1;
-        private const int MaxScore = 1;
+        private const int MaxScore = 7;
         public string Winner = "";
 
         public Form1()
